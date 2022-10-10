@@ -12,10 +12,23 @@
                 margin-top: 16px;
                 margin-bottom: 16px;
                 background-color: lightgray;
+                border-radius: 4px;
             }
-            .Button {
+            .Section h2 {
+                padding: 0px;
+                margin: 0px;
+            }
+            .Create-Committee {
+
+            }
+            .Button, .Textfield, .Dropdown, .Date {
                 height: 32px;
-                width: 128px;
+                padding: 0;
+                margin: 4px;
+            }
+            .Textarea {
+                padding: 0;
+                margin: 4px;
             }
             form {
                 display: flex;
@@ -25,15 +38,35 @@
     </head>
     <body>
         <h1>YeySON</h1>
+        <!--
+        <nav>
+            <ul>
+                <li>Committees</li>
+                <li>Posts</li>
+                <li>Pages</li>
+            </ul>
+        </nav>
+        -->
         <div class="Section">
             <h2>Create Committee</h2>
             <hr/>
             <form action="" method="post">
                 {% csrf_token %}
-                <label for="fname-1">Committee Name:</label>
-                <input type="text" id="fname-1" name="fname-1">
-                <input type="submit" class="Button" value="Create Committee" />
+                <div class="Create-Committee">
+                    <input type="text" class="Textfield" placeholder="CommitteeName" id="fname-1" name="fname-1">
+                    <input type="submit" class="Button" value="Create Committee" />
+                </div>
             </form>
+        </div>
+
+        <div class="Section">
+            <h2>Committees</h2>
+            <hr/>
+            <ul>
+                {% for o in committees %}
+                    <li>{{ o.title }}</li>
+                {% endfor %}
+            </ul>
         </div>
         
         <div class="Section">
@@ -41,21 +74,26 @@
             <hr/>
             <form action="" method="post">
                 {% csrf_token %}
-                <label for="Committee-Select">Choose a committee:</label>
-                <select name="committees" id="Committee-Select">
-                    <option value="Test-1">Test 1</option>
-                    <option value="Test-2">Test 2</option>
-                    <option value="Test-3">Test 3</option>
-                    <option value="Test-4">Test 4</option>
+                <select name="committees" class="Dropdown" id="Committee-Select">
+                    {% for o in committees %}
+                        <option>{{ o.title }}</option>
+                    {% endfor %}
                 </select>
-                <label for="fname-2">Name:</label>
-                <input type="text" id="fname-2" name="fname-2">
-                <label for="fname-3">Position:</label>
-                <input type="text" id="fname-3" name="fname-3">
-                <label for="fname-4">Mail:</label>
-                <input type="text" id="fname-4" name="fname-4">
+                <input type="text" class="Textfield" placeholder="Firstname Lastname" id="fname-2" name="fname-2">
+                <input type="text" class="Textfield" placeholder="webmaster" id="fname-3" name="fname-3">
+                <input type="text" class="Textfield" placeholder="name@domain.com" id="fname-4" name="fname-4">
                 <input type="submit" class="Button" value="Create Contact" />
             </form>
+        </div>
+
+        <div class="Section">
+            <h2>Contacts</h2>
+            <hr/>
+            <ul>
+                {% for o in contacts %}
+                    <li>{{ o.name }}, <b>{{ o.committee }} ({{ o.position }})</b> - <a href="#">{{ o.mail }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
 
         <div class="Section">
@@ -63,12 +101,9 @@
             <hr/>
             <form action="" method="post">
                 {% csrf_token %}
-                <label for="fname-7">Post Title:</label>
-                <input type="text" id="fname-7" name="fname-7">
-                <label for="date">Date:</label>
-                <input type="date" id="date" name="post-date" value="2022-10-10" min="2022-10-10" max="2023-10-10">
-                <label for="area-2">Post Content:</label>
-                <textarea id="area-2" name="area-2" rows="4" cols="50">Content</textarea>
+                <input type="text" class="Textfield" placeholder="Post Title" id="fname-7" name="fname-7">
+                <input type="date" class="Date" id="date" name="post-date" value="2022-10-10" min="2022-10-10" max="2023-10-10">
+                <textarea id="area-2" class="Textarea" placeholder="Post content..." name="area-2" rows="4" cols="50"></textarea>
                 <input type="submit" class="Button" value="Create Post" />
             </form>
         </div>
@@ -78,12 +113,9 @@
             <hr/>
             <form action="" method="post">
                 {% csrf_token %}
-                <label for="fname-5">Page Title:</label>
-                <input type="text" id="fname-5" name="fname-5">
-                <label for="fname-6">Page Path:</label>
-                <input type="text" id="fname-6" name="fname-6">
-                <label for="area-1">Page Content:</label>
-                <textarea id="area-1" name="area-1" rows="4" cols="50">Content</textarea> 
+                <input type="text" class="Textfield" placeholder="Page Title" id="fname-5" name="fname-5">
+                <input type="text" class="Textfield" placeholder="/path" id="fname-6" name="fname-6">
+                <textarea id="area-1" class="Textarea" placeholder="Page content..." name="area-1" rows="4" cols="50"></textarea> 
                 <input type="submit" class="Button" value="Create Page" />
             </form>
         </div>

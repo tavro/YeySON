@@ -4,6 +4,13 @@ from django.utils import timezone
 from YeySON.models import Committee, Contact, Post, Page
 
 def home(request):
+    all_committees = Committee.objects.all()
+    all_contacts = Contact.objects.all()
+    context = {
+        'committees': all_committees,
+        'contacts': all_contacts
+    }
+
     if request.method == 'POST':
         if "fname-1" in request.POST:
             Committee.objects.create(title=request.POST["fname-1"])
@@ -14,4 +21,4 @@ def home(request):
         elif "fname-7" in request.POST:
             Post.objects.create(title=request.POST["fname-7"], date=request.POST["post-date"], content=request.POST["area-2"])
 
-    return render(request, 'base.html')
+    return render(request, 'base.html', context)
