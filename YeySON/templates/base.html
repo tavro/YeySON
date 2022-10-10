@@ -3,6 +3,10 @@
     <head>
         <title>YeySON</title>
         <style>
+            html, body {
+                padding: 0;
+                margin: 0;
+            }
             .Section {
                 width: 50%;
                 border: 1px solid black;
@@ -34,19 +38,22 @@
                 display: flex;
                 flex-direction: column;
             }
+            header {
+                padding: 8px;
+                background-color: gray;
+            }
         </style>
     </head>
     <body>
-        <h1>YeySON</h1>
-        <!--
-        <nav>
-            <ul>
-                <li>Committees</li>
-                <li>Posts</li>
-                <li>Pages</li>
-            </ul>
-        </nav>
-        -->
+        <header>
+            <h1>YeySON</h1>
+            <nav>
+                <a href="#">Contacts</a>
+                <a href="/posts">Posts</a>
+                <a href="/pages">Pages</a>
+            </nav>
+        </header>
+        
         <div class="Section">
             <h2>Create Committee</h2>
             <hr/>
@@ -57,10 +64,6 @@
                     <input type="submit" class="Button" value="Create Committee" />
                 </div>
             </form>
-        </div>
-
-        <div class="Section">
-            <h2>Committees</h2>
             <hr/>
             <ul>
                 {% for o in committees %}
@@ -68,7 +71,6 @@
                 {% endfor %}
             </ul>
         </div>
-        
         <div class="Section">
             <h2>Create Contact</h2>
             <hr/>
@@ -84,40 +86,12 @@
                 <input type="text" class="Textfield" placeholder="name@domain.com" id="fname-4" name="fname-4">
                 <input type="submit" class="Button" value="Create Contact" />
             </form>
-        </div>
-
-        <div class="Section">
-            <h2>Contacts</h2>
             <hr/>
             <ul>
                 {% for o in contacts %}
                     <li>{{ o.name }}, <b>{{ o.committee }} ({{ o.position }})</b> - <a href="#">{{ o.mail }}</a></li>
                 {% endfor %}
             </ul>
-        </div>
-
-        <div class="Section">
-            <h2>Create Post</h2>
-            <hr/>
-            <form action="" method="post">
-                {% csrf_token %}
-                <input type="text" class="Textfield" placeholder="Post Title" id="fname-7" name="fname-7">
-                <input type="date" class="Date" id="date" name="post-date" value="2022-10-10" min="2022-10-10" max="2023-10-10">
-                <textarea id="area-2" class="Textarea" placeholder="Post content..." name="area-2" rows="4" cols="50"></textarea>
-                <input type="submit" class="Button" value="Create Post" />
-            </form>
-        </div>
-
-        <div class="Section">
-            <h2>Create Page</h2>
-            <hr/>
-            <form action="" method="post">
-                {% csrf_token %}
-                <input type="text" class="Textfield" placeholder="Page Title" id="fname-5" name="fname-5">
-                <input type="text" class="Textfield" placeholder="/path" id="fname-6" name="fname-6">
-                <textarea id="area-1" class="Textarea" placeholder="Page content..." name="area-1" rows="4" cols="50"></textarea> 
-                <input type="submit" class="Button" value="Create Page" />
-            </form>
         </div>
     </body>
 </html>

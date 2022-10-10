@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from YeySON.views import home
+from YeySON.views import home, posts, pages
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home)
+    path('', home),
+    path('posts/', posts),
+    path('pages/', pages)
 ]
