@@ -61,15 +61,14 @@
         <div class="Section">
             <h2>Create Post</h2>
             <hr/>
-            <form>
+            <form action="" method="post">
+                {% csrf_token %}
                 <label for="fname-7">Post Title:</label>
                 <input type="text" id="fname-7" name="fname-7">
                 <label for="date">Date:</label>
                 <input type="date" id="date" name="post-date" value="2022-10-10" min="2022-10-10" max="2023-10-10">
                 <label for="area-2">Post Content:</label>
-                <textarea id="area-2" name="area-2" rows="4" cols="50">Content</textarea> 
-                <label for="img">Banner image:</label>
-                <input type="file" id="img" name="img" accept="image/*">
+                <textarea id="area-2" name="area-2" rows="4" cols="50">Content</textarea>
                 <input type="submit" class="Button" value="Create Post" />
             </form>
         </div>
@@ -77,7 +76,8 @@
         <div class="Section">
             <h2>Create Page</h2>
             <hr/>
-            <form>
+            <form action="" method="post">
+                {% csrf_token %}
                 <label for="fname-5">Page Title:</label>
                 <input type="text" id="fname-5" name="fname-5">
                 <label for="fname-6">Page Path:</label>
