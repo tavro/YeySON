@@ -1,5 +1,5 @@
 # YeySON
-Soon to be a JSON tool
+This is a 'fake CMS' for creating groups, contact info, pages and posts.
 
 ## Output
 
