@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>YeySON</title>
+        <style>
+            .Section {
+                width: 50%;
+                border: 1px solid black;
+                padding: 8px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 16px;
+                margin-bottom: 16px;
+                background-color: lightgray;
+            }
+            .Button {
+                height: 32px;
+                width: 128px;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>YeySON</h1>
+        <div class="Section">
+            <h2>Create Committee</h2>
+            <hr/>
+            <form>
+                <label for="fname-1">Committee Name:</label>
+                <input type="text" id="fname-1" name="fname-1">
+                <input type="submit" class="Button" value="Create Committee" />
+            </form>
+        </div>
+        
+        <div class="Section">
+            <h2>Create Contact</h2>
+            <hr/>
+            <form>
+                <label for="Committee-Select">Choose a committee:</label>
+                <select name="Committees" id="Committee-Select">
+                    <option value="Test-1">Test 1</option>
+                    <option value="Test-2">Test 2</option>
+                    <option value="Test-3">Test 3</option>
+                    <option value="Test-4">Test 4</option>
+                </select>
+                <label for="fname-2">Name:</label>
+                <input type="text" id="fname-2" name="fname-2">
+                <label for="fname-3">Position:</label>
+                <input type="text" id="fname-3" name="fname-3">
+                <label for="fname-4">Mail:</label>
+                <input type="text" id="fname-4" name="fname-4">
+                <input type="submit" class="Button" value="Create Contact" />
+            </form>
+        </div>
+
+        <div class="Section">
+            <h2>Create Post</h2>
+            <hr/>
+            <form>
+                <label for="fname-7">Post Title:</label>
+                <input type="text" id="fname-7" name="fname-7">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="post-date" value="2022-10-10" min="2022-10-10" max="2023-10-10">
+                <label for="area-2">Post Content:</label>
+                <textarea id="area-2" name="area-2" rows="4" cols="50">Content</textarea> 
+                <label for="img">Banner image:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit" class="Button" value="Create Post" />
+            </form>
+        </div>
+
+        <div class="Section">
+            <h2>Create Page</h2>
+            <hr/>
+            <form>
+                <label for="fname-5">Page Title:</label>
+                <input type="text" id="fname-5" name="fname-5">
+                <label for="fname-6">Page Path:</label>
+                <input type="text" id="fname-6" name="fname-6">
+                <label for="area-1">Page Content:</label>
+                <textarea id="area-1" name="area-1" rows="4" cols="50">Content</textarea> 
+                <input type="submit" class="Button" value="Create Page" />
+            </form>
+        </div>
+    </body>
+</html>
