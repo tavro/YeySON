@@ -43,6 +43,23 @@
                 background-color: gray;
             }
         </style>
+        <script>
+            const markdownParser = () => {
+                text = document.getElementById('area-2').value;
+                const toHTML = text
+                    .replace(/^###### (.*$)/gim, '<h6>$1</h6>')
+                    .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
+                    .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
+                    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                    .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
+                    .replace(/\*(.*)\*/gim, '<i>$1</i>')
+                    .replace(/\[(.*)\]\((.*)\)/gim, '<a href="$2">$1</a>')
+                    .replace(/\!\((.*)\)/gim, '<img src="$1"/>')
+                document.getElementById('preview').innerHTML = toHTML.trim();
+            }
+        </script>
     </head>
     <body>
         <header>
@@ -61,9 +78,11 @@
                 {% csrf_token %}
                 <input type="text" class="Textfield" placeholder="Post Title" id="fname-7" name="fname-7">
                 <input type="date" class="Date" id="date" name="post-date" value="2022-10-10" min="2022-10-10" max="2023-10-10">
-                <textarea id="area-2" class="Textarea" placeholder="Post content..." name="area-2" rows="4" cols="50"></textarea>
+                <textarea id="area-2" class="Textarea" placeholder="Post content..." name="area-2" rows="4" cols="50" onkeyup="markdownParser()"></textarea>
                 <input type="submit" class="Button" value="Create Post" />
             </form>
+            <hr/>
+            <div id="preview"></div>
             <hr/>
             <ul>
                 {% for o in posts %}
