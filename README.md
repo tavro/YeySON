@@ -27,3 +27,12 @@ Soon to be a JSON tool
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Data" : [...]<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;}, ...<br/>
 ]
+
+### Pages
+[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Name" : "Example Page",<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Path" : "/example",<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Body" : "This could be HTML or Markup"<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}, ...<br/>
+]
