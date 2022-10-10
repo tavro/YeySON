@@ -28,7 +28,8 @@
         <div class="Section">
             <h2>Create Committee</h2>
             <hr/>
-            <form>
+            <form action="" method="post">
+                {% csrf_token %}
                 <label for="fname-1">Committee Name:</label>
                 <input type="text" id="fname-1" name="fname-1">
                 <input type="submit" class="Button" value="Create Committee" />
@@ -38,9 +39,10 @@
         <div class="Section">
             <h2>Create Contact</h2>
             <hr/>
-            <form>
+            <form action="" method="post">
+                {% csrf_token %}
                 <label for="Committee-Select">Choose a committee:</label>
-                <select name="Committees" id="Committee-Select">
+                <select name="committees" id="Committee-Select">
                     <option value="Test-1">Test 1</option>
                     <option value="Test-2">Test 2</option>
                     <option value="Test-3">Test 3</option>

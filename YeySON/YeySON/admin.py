@@ -9,5 +9,6 @@ class CommitteeAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ['id', 'committee', 'name', 'position', 'mail']
 
+
 admin.site.register(Committee, CommitteeAdmin)
 admin.site.register(Contact, ContactAdmin)
