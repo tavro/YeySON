@@ -40,7 +40,7 @@ def pages(request):
     all_pages = Page.objects.all()
 
     context = {
-        'posts': all_pages
+        'pages': all_pages
     }
 
     if request.method == 'POST':

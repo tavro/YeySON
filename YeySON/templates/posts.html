@@ -42,6 +42,44 @@
                 padding: 8px;
                 background-color: gray;
             }
+
+            .Post-Editor {
+                width: 50%;
+                margin: auto;
+                border: 1px solid black;
+                margin-top: 16px;
+                padding: 8px;
+            }
+            .Post-Editor-Titlefield, .Post-Editor-Button {
+                width: 100%;
+                height: 48px;
+                font-size: 24px;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: 600;
+                border: none;
+                padding: 0;
+                margin: 0;
+
+            }
+            .Post-Editor-Editorfield {
+                width: 100%;
+                font-size: 16px;
+                padding: 0;
+                font-family: 'Courier New', Courier, monospace;
+                border: none;
+                margin: 0;
+                resize: none;
+            }
+            .Post-Editor-Date {
+                width: 108px;
+                height: 32px;
+                font-size: 12px;
+                padding: 0;
+                font-family: 'Courier New', Courier, monospace;
+                border: none;
+                margin: 8px;
+                margin-left: 0;
+            }
         </style>
         <script>
             const markdownParser = () => {
@@ -57,7 +95,15 @@
                     .replace(/\*(.*)\*/gim, '<i>$1</i>')
                     .replace(/\[(.*)\]\((.*)\)/gim, '<a href="$2">$1</a>')
                     .replace(/\!\((.*)\)/gim, '<img src="$1"/>')
-                document.getElementById('preview').innerHTML = toHTML.trim();
+                    .replace(/(\\n)/gim, '<br/>')
+                document.getElementById('preview-body').innerHTML = toHTML.trim();
+                return toHTML.trim();
+            }
+            const setValue = () => {
+                document.getElementById('area-2').value = markdownParser();
+            }
+            const toHTML = () => {
+                document.getElementById('preview-header').innerHTML = document.getElementById('fname-7').value;
             }
         </script>
     </head>
@@ -71,29 +117,34 @@
             </nav>
         </header>
 
-        <div class="Section">
-            <h2>Create Post</h2>
-            <hr/>
+        <div class="Post-Editor">
             <form action="" method="post">
                 {% csrf_token %}
-                <input type="text" class="Textfield" placeholder="Post Title" id="fname-7" name="fname-7">
-                <input type="date" class="Date" id="date" name="post-date" value="2022-10-10" min="2022-10-10" max="2023-10-10">
-                <textarea id="area-2" class="Textarea" placeholder="Post content..." name="area-2" rows="4" cols="50" onkeyup="markdownParser()"></textarea>
-                <input type="submit" class="Button" value="Create Post" />
+                <input type="text" class="Post-Editor-Titlefield" placeholder="Post Title" id="fname-7" name="fname-7" onkeyup="toHTML()">
+                <input type="date" class="Post-Editor-Date" id="date" name="post-date" value="2022-10-10" min="2022-10-10" max="2023-10-10">
+                <textarea id="area-2" class="Post-Editor-Editorfield" placeholder="Post content..." name="area-2" rows="25" cols="50" onkeyup="markdownParser()"></textarea>
+                <input type="submit" class="Post-Editor-Button" value="Publish" onclick="setValue()"/>
             </form>
+        </div>
+
+        <div class="Section">
+            <h1 id="preview-header">Preview</h1>
             <hr/>
-            <div id="preview"></div>
-            <hr/>
-            <ul>
-                {% for o in posts %}
-                    <div>
-                        <h3>{{o.title}}</h3>
-                        <i>{{o.date}}</i>
-                        <p>{{o.content}}</p>
-                    </div>
-                    <hr/>
-                {% endfor %}
-            </ul>
+            <div id="preview-body">
+                preview body
+            </div>
+        </div>
+
+        <div class="Section">
+            <h2>Latest Published Posts</h2>
+            {% for o in posts %}
+                <hr/>
+                <div>
+                    <h3>{{o.title}}</h3>
+                    <i>{{o.date}}</i>
+                    <p>{{o.content}}</p>
+                </div>
+            {% endfor %}
         </div>
     </body>
 </html>
