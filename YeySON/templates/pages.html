@@ -22,9 +22,6 @@
                 padding: 0px;
                 margin: 0px;
             }
-            .Create-Committee {
-
-            }
             .Button, .Textfield, .Dropdown, .Date {
                 height: 32px;
                 padding: 0;
@@ -38,43 +35,128 @@
                 display: flex;
                 flex-direction: column;
             }
-            header {
+            .Post-Editor {
+                width: 50%;
+                margin: auto;
+                border: 1px solid black;
+                margin-top: 16px;
                 padding: 8px;
-                background-color: gray;
+            }
+            .Post-Editor-Titlefield, .Post-Editor-Button {
+                width: 100%;
+                height: 48px;
+                font-size: 24px;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: 600;
+                border: none;
+                padding: 0;
+                margin: 0;
+
+            }
+            .Post-Editor-Editorfield {
+                width: 100%;
+                font-size: 16px;
+                padding: 0;
+                font-family: 'Courier New', Courier, monospace;
+                border: none;
+                margin: 0;
+                resize: none;
+            }
+            header {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                box-sizing: border-box;
+                width: 100%;
+                height: 64px;
+                background-color: #fff;
+                padding-block: 1em;
+                padding: 8px;
+                box-shadow: 0 0.0625em 0.5em rgba(0, 0, 0, 0.3);
+                content: '';
+                right: 0;
+                top: 0;
+                z-index: -1;
+            }
+            nav {
+                height: 32px;
+            }
+            nav a {
+                color: inherit;
+                display: block;
+                padding-inline: 1em;
+                text-decoration: none;
+            }
+            nav h1 {
+                width: 148px;
+                float: left;
+                padding: 0;
+                margin: 0;
+                height: 32px;
+            }
+            nav ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                gap: 1.5em;
+                height: 32px;
+            }
+            nav li {
+                height: 18px;
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+            header div {
+                inline-size: 90%;
+                margin-inline: auto;
+            }
+            .a-active {
+                background-color: #000;
+                border-radius: 999em;
+                color: #fff;
             }
         </style>
     </head>
     <body>
         <header>
-            <h1>YeySON</h1>
-            <nav>
-                <a href="/">Contacts</a>
-                <a href="/posts">Posts</a>
-                <a href="#">Pages</a>
-            </nav>
+            <div>
+                <nav>
+                    <h1>YeySON</h1>
+                    <ul>
+                        <li><a href="/">Contacts</a></li>
+                        <li><a href="/posts">Posts</a></li>
+                        <li><a href="#" class="a-active">Pages</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
-        
-        <div class="Section">
-            <h2>Create Page</h2>
-            <hr/>
+
+        <div class="Post-Editor">
             <form action="" method="post">
                 {% csrf_token %}
-                <input type="text" class="Textfield" placeholder="Page Title" id="fname-5" name="fname-5">
-                <input type="text" class="Textfield" placeholder="/path" id="fname-6" name="fname-6">
-                <textarea id="area-1" class="Textarea" placeholder="Page content..." name="area-1" rows="4" cols="50"></textarea> 
-                <input type="submit" class="Button" value="Create Page" />
+                <input type="text" class="Post-Editor-Titlefield" placeholder="Page Title" id="fname-5" name="fname-5">
+                <textarea id="area-1" class="Post-Editor-Editorfield" placeholder="Page content..." name="area-1" rows="25" cols="50"></textarea>
+                <input type="submit" class="Post-Editor-Button" value="Create Page"/>
             </form>
+        </div>
+
+        <div class="Section">
+            <h1 id="preview-header">Preview</h1>
             <hr/>
-            <ul>
-                {% for o in pages %}
-                    <div>
-                        <h3>{{o.title}}</h3>
-                        <i>{{o.path}}</i>
-                        <p>{{o.content}}</p>
-                    </div>
-                    <hr/>
-                {% endfor %}
-            </ul>
+            <div id="preview-body">
+                preview body
+            </div>
+        </div>
+
+        <div class="Section">
+            <h2>Latest Created Pages</h2>
+            {% for o in pages %}
+                <hr/>
+                <div>
+                    <h3>{{o.title}}</h3>
+                    <i>{{o.path}}</i>
+                    <p>{{o.content}}</p>
+                </div>
+            {% endfor %}
         </div>
     </body>
 </html>

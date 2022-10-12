@@ -22,9 +22,6 @@
                 padding: 0px;
                 margin: 0px;
             }
-            .Create-Committee {
-
-            }
             .Button, .Textfield, .Dropdown, .Date {
                 height: 32px;
                 padding: 0;
@@ -38,11 +35,6 @@
                 display: flex;
                 flex-direction: column;
             }
-            header {
-                padding: 8px;
-                background-color: gray;
-            }
-
             .Post-Editor {
                 width: 50%;
                 margin: auto;
@@ -80,6 +72,58 @@
                 margin: 8px;
                 margin-left: 0;
             }
+            header {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                box-sizing: border-box;
+                width: 100%;
+                height: 64px;
+                background-color: #fff;
+                padding-block: 1em;
+                padding: 8px;
+                box-shadow: 0 0.0625em 0.5em rgba(0, 0, 0, 0.3);
+                content: '';
+                right: 0;
+                top: 0;
+                z-index: -1;
+            }
+            nav {
+                height: 32px;
+            }
+            nav a {
+                color: inherit;
+                display: block;
+                padding-inline: 1em;
+                text-decoration: none;
+            }
+            nav h1 {
+                width: 148px;
+                float: left;
+                padding: 0;
+                margin: 0;
+                height: 32px;
+            }
+            nav ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                gap: 1.5em;
+                height: 32px;
+            }
+            nav li {
+                height: 18px;
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+            header div {
+                inline-size: 90%;
+                margin-inline: auto;
+            }
+            .a-active {
+                background-color: #000;
+                border-radius: 999em;
+                color: #fff;
+            }
         </style>
         <script>
             const markdownParser = () => {
@@ -109,12 +153,16 @@
     </head>
     <body>
         <header>
-            <h1>YeySON</h1>
-            <nav>
-                <a href="/">Contacts</a>
-                <a href="#">Posts</a>
-                <a href="/pages">Pages</a>
-            </nav>
+            <div>
+                <nav>
+                    <h1>YeySON</h1>
+                    <ul>
+                        <li><a href="/">Contacts</a></li>
+                        <li><a href="#" class="a-active">Posts</a></li>
+                        <li><a href="/pages">Pages</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
 
         <div class="Post-Editor">

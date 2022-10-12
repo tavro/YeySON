@@ -52,7 +52,8 @@ def pages(request):
 
     if request.method == 'POST':
         if "fname-5" in request.POST:
-            Page.objects.create(title=request.POST["fname-5"], path=request.POST["fname-6"], content=request.POST["area-1"])
+            path_from_title = '/' + request.POST["fname-5"].lower().replace(' ', '-')
+            Page.objects.create(title=request.POST["fname-5"], path=path_from_title, content=request.POST["area-1"])
 
     return render(request, 'pages.html', context)
 
