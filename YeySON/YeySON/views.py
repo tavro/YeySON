@@ -41,7 +41,7 @@ def home(request):
         elif "fname-2" in request.POST:
             Contact.objects.create(committee=request.POST["committees"], name=request.POST["fname-2"], position=request.POST["fname-3"], mail=request.POST["fname-4"])
 
-    return render(request, 'base.html', context)
+    return render(request, 'contact.html', context)
 
 
 def posts(request):

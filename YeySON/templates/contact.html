@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>YeySON</title>
+        {% include "css/contact-css.html" %}
+    </head>
+    <body>
+        {% include "components/header.html" %}
+        
+        <div class="Section">
+            <h2>Create Committee</h2>
+            <hr/>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="Create-Committee">
+                    <input type="text" class="Textfield" placeholder="CommitteeName" id="fname-1" name="fname-1">
+                    <input type="submit" class="Button" value="Create Committee" />
+                </div>
+            </form>
+            <hr/>
+            <ul>
+                {% for o in committees %}
+                    <span class="committee-display">{{ o.title }}</span>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="Section">
+            <h2>Create Contact</h2>
+            <hr/>
+            <form action="" method="post">
+                {% csrf_token %}
+                <select name="committees" class="Dropdown" id="Committee-Select">
+                    {% for o in committees %}
+                        <option>{{ o.title }}</option>
+                    {% endfor %}
+                </select>
+                <input type="text" class="Textfield" placeholder="Firstname Lastname" id="fname-2" name="fname-2">
+                <input type="text" class="Textfield" placeholder="webmaster" id="fname-3" name="fname-3">
+                <input type="text" class="Textfield" placeholder="name@domain.com" id="fname-4" name="fname-4">
+                <input type="submit" class="Button" value="Create Contact" />
+            </form>
+            <hr/>
+                {% for o in contacts %}
+                    <div class="contact">
+                        <span class="name">{{ o.name }}</span> 
+                        <span class="position"><b>{{ o.committee }} ({{ o.position }})</b></span>  
+                        <span class="mail"><a href="#">{{ o.mail }}</a></span>
+                    </div>
+                {% endfor %}
+        </div>
+    </body>
+</html>
