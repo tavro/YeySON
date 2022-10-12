@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from YeySON.views import home, posts, pages, PostListCreate
+from YeySON.views import home, posts, pages, PostListCreate, PageListCreate, CommitteeListCreate, ContactListCreate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
     path('posts/', posts),
     path('pages/', pages),
-    path('api/posts/', PostListCreate.as_view())
+    path('api/posts/', PostListCreate.as_view()),
+    path('api/pages/', PageListCreate.as_view()),
+    path('api/committees/', CommitteeListCreate.as_view()),
+    path('api/contacts/', ContactListCreate.as_view())
 ]

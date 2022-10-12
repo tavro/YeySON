@@ -6,6 +6,13 @@
             html, body {
                 padding: 0;
                 margin: 0;
+                background: #eee;
+            }
+            .Preview-Section {
+                border: 1px solid black;
+                padding: 8px;
+                margin-left: 8px;
+                background-color: white;
             }
             .Section {
                 width: 50%;
@@ -16,7 +23,6 @@
                 margin-top: 16px;
                 margin-bottom: 16px;
                 background-color: lightgray;
-                border-radius: 4px;
             }
             .Section h2 {
                 padding: 0px;
@@ -36,11 +42,10 @@
                 flex-direction: column;
             }
             .Post-Editor {
-                width: 50%;
-                margin: auto;
                 border: 1px solid black;
-                margin-top: 16px;
                 padding: 8px;
+                margin-right: 8px;
+                background-color: white;
             }
             .Post-Editor-Titlefield, .Post-Editor-Button {
                 width: 100%;
@@ -124,6 +129,14 @@
                 border-radius: 999em;
                 color: #fff;
             }
+
+            .Editor {
+                width: 80%;
+                margin: auto;
+                margin-top: 16px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
         </style>
         <script>
             const markdownParser = () => {
@@ -165,21 +178,22 @@
             </div>
         </header>
 
-        <div class="Post-Editor">
-            <form action="" method="post">
-                {% csrf_token %}
-                <input type="text" class="Post-Editor-Titlefield" placeholder="Post Title" id="fname-7" name="fname-7" onkeyup="toHTML()">
-                <input type="date" class="Post-Editor-Date" id="date" name="post-date" value="2022-10-10" min="2022-10-10" max="2023-10-10">
-                <textarea id="area-2" class="Post-Editor-Editorfield" placeholder="Post content..." name="area-2" rows="25" cols="50" onkeyup="markdownParser()"></textarea>
-                <input type="submit" class="Post-Editor-Button" value="Publish" onclick="setValue()"/>
-            </form>
-        </div>
-
-        <div class="Section">
-            <h1 id="preview-header">Preview</h1>
-            <hr/>
-            <div id="preview-body">
-                preview body
+        <div class="Editor">
+            <div class="Post-Editor">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="text" class="Post-Editor-Titlefield" placeholder="Post Title" id="fname-7" name="fname-7" onkeyup="toHTML()">
+                    <input type="date" class="Post-Editor-Date" id="date" name="post-date" value="2022-10-10" min="2022-10-10" max="2023-10-10">
+                    <textarea id="area-2" class="Post-Editor-Editorfield" placeholder="Post content..." name="area-2" rows="25" cols="50" onkeyup="markdownParser()"></textarea>
+                    <input type="submit" class="Post-Editor-Button" value="Publish" onclick="setValue()"/>
+                </form>
+            </div>
+            <div class="Preview-Section">
+                <h1 id="preview-header">Preview</h1>
+                <hr/>
+                <div id="preview-body">
+                    preview body
+                </div>
             </div>
         </div>
 

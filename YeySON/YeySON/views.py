@@ -2,13 +2,28 @@ from django.shortcuts import render
 from django.utils import timezone
 
 from YeySON.models import Committee, Contact, Post, Page
-from YeySON.serializers import PostSerializer
+from YeySON.serializers import PostSerializer, PageSerializer, CommitteeSerializer, ContactSerializer
 
 from rest_framework import generics
 
 class PostListCreate(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+
+class PageListCreate(generics.ListCreateAPIView):
+    queryset = Page.objects.all()
+    serializer_class = PageSerializer
+
+
+class ContactListCreate(generics.ListCreateAPIView):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+
+
+class CommitteeListCreate(generics.ListCreateAPIView):
+    queryset = Committee.objects.all()
+    serializer_class = CommitteeSerializer
 
 
 def home(request):

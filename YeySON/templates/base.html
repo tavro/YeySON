@@ -6,6 +6,7 @@
             html, body {
                 padding: 0;
                 margin: 0;
+                background: #eee;
             }
             .Section {
                 width: 50%;
@@ -16,7 +17,6 @@
                 margin-top: 16px;
                 margin-bottom: 16px;
                 background-color: lightgray;
-                border-radius: 4px;
             }
             .Section h2 {
                 padding: 0px;
@@ -88,6 +88,24 @@
                 border-radius: 999em;
                 color: #fff;
             }
+
+            .contact {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .name {
+                display: inline-block;
+                width: 156px;
+            }
+            .position, .mail {
+                display: inline-block;
+                width: 256px;
+            }
+            .committee-display {
+                display: inline-block;
+                width: 156px;
+            }
         </style>
     </head>
     <body>
@@ -117,7 +135,7 @@
             <hr/>
             <ul>
                 {% for o in committees %}
-                    <li>{{ o.title }}</li>
+                    <span class="committee-display">{{ o.title }}</span>
                 {% endfor %}
             </ul>
         </div>
@@ -137,11 +155,13 @@
                 <input type="submit" class="Button" value="Create Contact" />
             </form>
             <hr/>
-            <ul>
                 {% for o in contacts %}
-                    <li>{{ o.name }}, <b>{{ o.committee }} ({{ o.position }})</b> - <a href="#">{{ o.mail }}</a></li>
+                    <div class="contact">
+                        <span class="name">{{ o.name }}</span> 
+                        <span class="position"><b>{{ o.committee }} ({{ o.position }})</b></span>  
+                        <span class="mail"><a href="#">{{ o.mail }}</a></span>
+                    </div>
                 {% endfor %}
-            </ul>
         </div>
     </body>
 </html>
